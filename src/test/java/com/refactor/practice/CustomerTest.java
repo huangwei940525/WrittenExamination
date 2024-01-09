@@ -16,7 +16,7 @@ public class CustomerTest {
 
 	@Before
 	public void setUp() throws IOException {
-		customer = new Customer("user1", new Vector());
+		customer = new Customer("user1");
 		File file = new File("src/test/java/com/refactor/practice/baseline");
 		baseline = FileUtils.readFileToString(file);
 	}
@@ -29,6 +29,7 @@ public class CustomerTest {
 		addRental(customer, "children movie", Movie.CHILDRENS, 5);
 		//when
 		String result = customer.statement();
+		customer.htmlStatement("RentalRecord.html");
 		//then
 		assertThat(result).isEqualTo(baseline);
 	}
